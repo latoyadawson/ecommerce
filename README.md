@@ -42,10 +42,6 @@ This is a backend e-commerce site (CMS) that can be used to update employee's de
 * WHEN I test API POST, PUT, and DELETE routes in Insomnia Core
 * THEN I am able to successfully create, update, and delete data in my database
 
-## Website
-* https://latoyadawson.github.io/ecommerce/
-
-
 ## Contribution
 Made with ❤️  by  Latoya Dawson
 
