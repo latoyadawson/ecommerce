@@ -13,7 +13,7 @@ This is a backend e-commerce site (CMS) that can be used to update employee's de
 
 ## Screenshot
 ### GET, POST, PUT, DELETE Routes for Category
-![gif for category routes](Develop/assets/category-routes.gif)
+![gif for category routes](Develop/assets/cateogry-routes.gif)
 
 ### GET, POST, PUT, DELETE Routes for Product
 ![gif for product routes](Develop/assets/product-routes.gif)
