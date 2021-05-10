@@ -64,13 +64,14 @@ router.get('/:id', (req, res) => {
   })
   .then(dbProductData => {
     if(!dbProductData) {
-        res.status(404).json({ message: 'No category found with this id'});
-        return;
+      res.status(404).json({ message: 'No category found with this id'});
+      return;
     }
+    res.json(dbProductData);
   })
   .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+    console.log(err);
+    res.status(500).json(err);
   });
   
 });
@@ -109,9 +110,9 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   // update product data
   Product.update(req.body, {
-    where: {
-      id: req.params.id,
-    },
+  where: {
+    id: req.params.id,
+  },
   })
     .then((product) => {
       // find all associated tags from ProductTag
@@ -140,12 +141,20 @@ router.put('/:id', (req, res) => {
         ProductTag.bulkCreate(newProductTags),
       ]);
     })
-    .then((updatedProductTags) => res.json(updatedProductTags))
+    .then((updatedProductTags) => {
+      if(!updatedProductTags) {
+        res.status(404).json({ message: 'No category found with this id'});
+        return;
+      }
+      res.json(updatedProductTags);
+    })
     .catch((err) => {
       // console.log(err);
       res.status(400).json(err);
     });
 });
+
+
 
 router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
@@ -159,6 +168,7 @@ router.delete('/:id', (req, res) => {
         res.status(404).json({ message: 'No product found with this id'});
         return;
     }
+    res.json(dbProductData);
   })
   .catch(err => {
       console.log(err);

@@ -33,12 +33,8 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Product,
-        attributes: ['id', 'product_name', 'price', 'stock', 'created_at'],
+        attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
       },
-      {
-        model: ProductTag,
-        attributes: ['id', 'product_id', 'tag_id'],
-      }
       
     ]
   })
@@ -47,6 +43,7 @@ router.get('/:id', (req, res) => {
         res.status(404).json({ message: 'No tag found with this id'});
         return;
     }
+    res.json(dbTagData);
   })
   .catch(err => {
       console.log(err);
@@ -81,6 +78,7 @@ router.put('/:id', (req, res) => {
         res.status(404).json({ message: 'No tag found with this id'});
         return;
     }
+    res.json(dbTagData);
   })
   .catch(err => {
       console.log(err);
@@ -100,6 +98,7 @@ router.delete('/:id', (req, res) => {
         res.status(404).json({ message: 'No tag found with this id'});
         return;
     }
+    res.json(dbTagData);
   })
   .catch(err => {
       console.log(err);
